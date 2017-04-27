@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Bierexpert</string>
+    <string name="landen">Landen</string>
+    <string name="merken">Merken</string>
+    <string name="kies_een_biertype">Kies een biertype</string>
+    <string-array name="bierSoorten">
+        <item>Blond</item>
+        <item>Bock</item>
+        <item>Geuze</item>
+        <item>Lentebok</item>
+        <item>Pils</item>
+        <item>Tripel</item>
+        <item>Weizen</item>
+    </string-array>
+</resources>
