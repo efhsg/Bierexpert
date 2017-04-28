@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nl.differentcook.bierexpert.R;
 import nl.differentcook.bierexpert.lib.App;
 
@@ -23,29 +26,90 @@ public class VindBierActivity extends Activity {
 
 
     public void vindLanden(View view) {
-        TextView brands = (TextView) findViewById(R.id.landenText);
+        TextView landen = (TextView) findViewById(R.id.landenText);
         Spinner color = (Spinner) findViewById(R.id.biertypenSpinner);
         String beerType = String.valueOf(color.getSelectedItem());
 
-/*        List<String> brandsList = expert.getBrands(beerType);
-        StringBuilder brandsFormatted = new StringBuilder();
-        for (String brand : brandsList) {
-            brandsFormatted.append(brand).append('\n');
-        }*/
-        brands.setText("vindLandenClick");
+        List<String> landenLijst = new ArrayList<String>();
+        switch (beerType) {
+            case "Blond":
+                landenLijst.add("België");
+                landenLijst.add("Duitsland");
+                landenLijst.add("Nederland");
+                break;
+            case "Geuze":
+                landenLijst.add("België");
+                break;
+            case "Lentebok":
+                landenLijst.add("Nederland");
+                break;
+            case "Pils":
+                landenLijst.add("België");
+                landenLijst.add("Denemarken");
+                landenLijst.add("Duitsland");
+                landenLijst.add("Nederland");
+                landenLijst.add("Tsjechië");
+                break;
+            case "Tripel":
+                landenLijst.add("België");
+                landenLijst.add("Nederland");
+                break;
+            case "Weizen":
+                landenLijst.add("Duitsland");
+                landenLijst.add("Nederland");
+                break;
+        }
+
+        StringBuilder landenFormatted = new StringBuilder();
+        for (String land : landenLijst) {
+            landenFormatted.append(land).append('\n');
+        }
+        landen.setText(landenFormatted);
     }
 
     public void vindMerken(View view) {
-        TextView brands = (TextView) findViewById(R.id.merkenText);
+        TextView merken = (TextView) findViewById(R.id.merkenText);
         Spinner color = (Spinner) findViewById(R.id.biertypenSpinner);
         String beerType = String.valueOf(color.getSelectedItem());
 
-/*        List<String> brandsList = expert.getBrands(beerType);
-        StringBuilder brandsFormatted = new StringBuilder();
-        for (String brand : brandsList) {
-            brandsFormatted.append(brand).append('\n');
-        }*/
-        brands.setText("vindMerkenClick");
+        List<String> merkenLijst = new ArrayList<String>();
+        switch (beerType) {
+            case "Blond":
+                merkenLijst.add("Affligem");
+                merkenLijst.add("Jopen");
+                merkenLijst.add("Leffe");
+                merkenLijst.add("Wieninger");
+                break;
+            case "Geuze":
+                merkenLijst.add("Belle-Vue");
+                break;
+            case "Lentebok":
+                merkenLijst.add("Bavaria");
+                merkenLijst.add("De Leckere");
+                break;
+            case "Pils":
+                merkenLijst.add("Carlsberg");
+                merkenLijst.add("Grolsch");
+                merkenLijst.add("Jupiler");
+                merkenLijst.add("Pinkus");
+                merkenLijst.add("Urquell");
+                break;
+            case "Tripel":
+                merkenLijst.add("Grimbergen");
+                merkenLijst.add("Westmalle");
+                break;
+            case "Weizen":
+                merkenLijst.add("Erdinger");
+                merkenLijst.add("PaulanerK");
+                break;
+        }
+
+        StringBuilder merkenFormatted = new StringBuilder();
+        for (String merk : merkenLijst) {
+            merkenFormatted.append(merk).append('\n');
+        }
+        merken.setText(merkenFormatted);
+
     }
 
     public class BiertypeSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
