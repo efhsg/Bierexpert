@@ -1,5 +1,7 @@
 package nl.differentcook.bierexpert.lib;
 
+import java.util.List;
+
 /**
  * Created by esg on 28/04/2017.
  */
@@ -17,4 +19,11 @@ public class App {
         return tag;
     }
 
+    public static StringBuilder listToStringbuilder(List<String> list) {
+        StringBuilder builtString = new StringBuilder();
+        for (String item : list) {
+            builtString.append(item).append('\n');
+        }
+        return builtString;
+    }
 }
