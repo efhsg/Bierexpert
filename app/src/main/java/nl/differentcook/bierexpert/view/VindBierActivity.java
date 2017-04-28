@@ -11,8 +11,11 @@ import android.widget.TextView;
 import nl.differentcook.bierexpert.R;
 import nl.differentcook.bierexpert.lib.App;
 import nl.differentcook.bierexpert.model.Bierexpert;
+import nl.differentcook.bierexpert.model.BierexpertInterface;
 
 public class VindBierActivity extends Activity {
+
+    private BierexpertInterface bierexpert = new Bierexpert("");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +26,13 @@ public class VindBierActivity extends Activity {
 
     public void vindLanden(View view) {
         Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
-        Bierexpert bierexpert = new Bierexpert(String.valueOf(bierType.getSelectedItem()));
+        bierexpert.setType(String.valueOf(bierType.getSelectedItem()));
         ((TextView) findViewById(R.id.landenText)).setText(App.listToStringbuilder(bierexpert.getLanden()));
     }
 
     public void vindMerken(View view) {
         Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
-        Bierexpert bierexpert = new Bierexpert(String.valueOf(bierType.getSelectedItem()));
+        bierexpert = new Bierexpert(String.valueOf(bierType.getSelectedItem()));
         ((TextView) findViewById(R.id.merkenText)).setText(App.listToStringbuilder(bierexpert.getMerken()));
     }
 

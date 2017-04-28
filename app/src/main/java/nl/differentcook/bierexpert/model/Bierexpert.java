@@ -4,23 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Bierexpert {
+public class Bierexpert implements BierexpertInterface {
 
     private String type;
-
 
     public Bierexpert(String type) {
         this.type = type;
     }
 
+    @Override
     public String getType() {
         return type;
     }
 
+    @Override
     public void setType(String type) {
         this.type = type;
     }
 
+    @Override
     public List<String> getLanden() {
         List<String> landenLijst = new ArrayList<String>();
         switch (type) {
@@ -55,6 +57,7 @@ public class Bierexpert {
         return landenLijst;
     }
 
+    @Override
     public List<String> getMerken() {
         List<String> merkenLijst = new ArrayList<String>();
         switch (type) {
