@@ -4,6 +4,7 @@
     <string name="merken">Merken</string>
     <string name="kies_een_biertype">Kies een biertype</string>
     <string-array name="bierSoorten">
+        <item></item>
         <item>Blond</item>
         <item>Bock</item>
         <item>Geuze</item>
