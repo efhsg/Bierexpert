@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nl.differentcook.bierexpert.view.VindBierActivity"
+    tools:context="nl.differentcook.bierexpert.view.VindBierAcitivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="73dp">
 
@@ -51,7 +51,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="vindLanden"
+        android:onClick="landenButtonClicked"
         android:text="@string/landen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
@@ -70,7 +70,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="vindMerken"
+        android:onClick="merkenButonClicked"
         android:text="@string/merken"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.842"

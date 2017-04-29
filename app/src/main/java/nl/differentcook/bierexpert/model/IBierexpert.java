@@ -6,7 +6,7 @@ import java.util.List;
  * Created by esg on 29/04/2017.
  */
 
-public interface BierexpertInterface {
+public interface IBierexpert {
     String getType();
 
     void setType(String type);

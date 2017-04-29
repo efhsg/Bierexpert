@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Bierexpert implements BierexpertInterface {
+public class Bierexpert implements IBierexpert {
 
     private String type;
 
