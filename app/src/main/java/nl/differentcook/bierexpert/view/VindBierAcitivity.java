@@ -32,8 +32,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
     }
 
     public void landenButtonClicked(View view) {
-        Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
-        vindBierPresenter.laadLanden(String.valueOf(bierType.getSelectedItem()));
+        vindBierPresenter.laadLanden(String.valueOf(((Spinner) findViewById(R.id.biertypenSpinner)).getSelectedItem()));
     }
 
     @Override
@@ -42,6 +41,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
     }
 
     public void merkenButonClicked(View view) {
+        vindBierPresenter.laadMerken(String.valueOf(((Spinner) findViewById(R.id.biertypenSpinner)).getSelectedItem()));
 /*
         Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
         vindBierPresenter.laadLanden(String.valueOf(bierType.getSelectedItem()));
