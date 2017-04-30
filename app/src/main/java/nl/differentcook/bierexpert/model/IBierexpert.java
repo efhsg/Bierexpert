@@ -7,11 +7,8 @@ import java.util.List;
  */
 
 public interface IBierexpert {
-    String getType();
 
-    void setType(String type);
+    List<String> getLanden(String type);
 
-    List<String> getLanden();
-
-    List<String> getMerken();
+    List<String> getMerken(String type);
 }

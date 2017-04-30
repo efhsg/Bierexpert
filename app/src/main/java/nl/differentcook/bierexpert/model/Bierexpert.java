@@ -6,24 +6,8 @@ import java.util.List;
 
 public class Bierexpert implements IBierexpert {
 
-    private String type;
-
-    public Bierexpert(String type) {
-        this.type = type;
-    }
-
     @Override
-    public String getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public List<String> getLanden() {
+    public List<String> getLanden(String type) {
         List<String> landenLijst = new ArrayList<String>();
         switch (type) {
             case "Blond":
@@ -58,7 +42,7 @@ public class Bierexpert implements IBierexpert {
     }
 
     @Override
-    public List<String> getMerken() {
+    public List<String> getMerken(String type) {
         List<String> merkenLijst = new ArrayList<String>();
         switch (type) {
             case "Blond":

@@ -22,18 +22,27 @@ public class VindBierPresenterTest {
         IBierexpert bierexpert = new MockBierexpert();
 
         //when
-        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview);
+        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
         vindBierPresenter.laadLanden("Pils");
 
         //then
-        assertEquals(true, ((MockView) bierview).passed);
+        assertTrue(((MockView) bierview).passed);
 
     }
 
     @Test
     public void laadMerken() throws Exception {
 
-        assertEquals(4, 2 + 2);
+        //given
+        IVindBierView bierview = new MockView();
+        IBierexpert bierexpert = new MockBierexpert();
+
+        //when
+        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
+        vindBierPresenter.laadMerken("Blond");
+
+        //then
+        assertTrue(((MockView) bierview).passed);
 
     }
 
@@ -43,34 +52,24 @@ public class VindBierPresenterTest {
 
         @Override
         public void toonLanden(List<String> landenLijst) {
-            passed = true;
+            passed = (landenLijst.size() == 3);
         }
 
         @Override
         public void toonMerken(List<String> merkenLijst) {
-            passed = true;
+            passed = (merkenLijst.size() == 2);
         }
     }
 
     private class MockBierexpert implements IBierexpert {
         @Override
-        public String getType() {
-            return null;
-        }
-
-        @Override
-        public void setType(String type) {
-
-        }
-
-        @Override
-        public List<String> getLanden() {
+        public List<String> getLanden(String type) {
             return Arrays.asList("Nederland", "België", "Duitsland");
         }
 
         @Override
-        public List<String> getMerken() {
-            return null;
+        public List<String> getMerken(String type) {
+            return Arrays.asList("Grolsch", "Leffe");
         }
     }
 }
