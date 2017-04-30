@@ -1,6 +1,7 @@
 package nl.differentcook.bierexpert.presenter;
 
 
+import nl.differentcook.bierexpert.model.IBierexpert;
 import nl.differentcook.bierexpert.view.IVindBierView;
 
 
@@ -9,12 +10,19 @@ import nl.differentcook.bierexpert.view.IVindBierView;
  */
 
 public class VindBierPresenter {
-
-    private IVindBierView view;
+    
+    private IVindBierView bierView;
+    private IBierexpert bierexpert;
 
     public VindBierPresenter(IVindBierView view) {
-        this.view = view;
+        this.bierView = view;
     }
+
+    public VindBierPresenter(IVindBierView bierView, IBierexpert bierexpert) {
+        this.bierView = bierView;
+        this.bierexpert = bierexpert;
+    }
+
 
     public void laadLanden(String bierType) {
         //@TODO haal de landen op en toon in view

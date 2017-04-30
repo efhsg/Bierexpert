@@ -26,9 +26,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vind_bier);
         ((Spinner) findViewById(R.id.biertypenSpinner)).setOnItemSelectedListener(new BiertypeSpinnerActivity());
-
         vindBierPresenter = new VindBierPresenter(this);
-
     }
 
     public void landenButtonClicked(View view) {
