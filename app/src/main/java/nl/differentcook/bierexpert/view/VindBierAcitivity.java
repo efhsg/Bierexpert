@@ -34,6 +34,11 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
         ((TextView) findViewById(R.id.landenText)).setText(App.listToStringbuilder(landenLijst));
     }
 
+    @Override
+    public void toonGeenLanden() {
+        ((TextView) findViewById(R.id.landenText)).setText("Geen landen gevonden!");
+    }
+
     public void merkenButonClicked(View view) {
         vindBierPresenter.laadMerken(String.valueOf(((Spinner) findViewById(R.id.biertypenSpinner)).getSelectedItem()));
     }

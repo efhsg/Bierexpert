@@ -1,6 +1,9 @@
 package nl.differentcook.bierexpert.presenter;
 
 
+import java.util.Collections;
+import java.util.List;
+
 import nl.differentcook.bierexpert.model.Bierexpert;
 import nl.differentcook.bierexpert.model.IBierexpert;
 import nl.differentcook.bierexpert.view.IVindBierView;
@@ -11,7 +14,7 @@ import nl.differentcook.bierexpert.view.IVindBierView;
  */
 
 public class VindBierPresenter {
-    
+
     private IVindBierView bierView;
     private IBierexpert bierexpert;
 
@@ -26,7 +29,14 @@ public class VindBierPresenter {
     }
 
     public void laadLanden(String bierType) {
-        bierView.toonLanden(bierexpert.getLanden(bierType));
+        List<String> landenList = bierexpert.getLanden(bierType);
+        if (landenList == Collections.EMPTY_LIST) {
+            bierView.toonGeenLanden();
+        }
+        else {
+            bierView.toonLanden(landenList);
+        }
+
     }
 
     public void laadMerken(String bierType) {

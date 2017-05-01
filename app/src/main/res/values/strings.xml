@@ -6,6 +6,7 @@
     <string-array name="bierSoorten">
         <item></item>
         <item>Blond</item>
+        <item>Fantasia</item>
         <item>Geuze</item>
         <item>Lentebok</item>
         <item>Pils</item>

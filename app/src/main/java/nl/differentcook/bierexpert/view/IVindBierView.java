@@ -11,5 +11,7 @@ import java.util.List;
 public interface IVindBierView {
     void toonLanden(List<String> landenLijst);
 
+    void toonGeenLanden();
+
     void toonMerken(List<String> merkenLijst);
 }
