@@ -30,7 +30,7 @@ public class VindBierPresenter {
 
     public void laadLanden(String bierType) {
         List<String> landenList = bierexpert.getLanden(bierType);
-        if (landenList == Collections.EMPTY_LIST) {
+        if (landenList.size() == 0) {
             bierView.toonGeenLanden();
         }
         else {
