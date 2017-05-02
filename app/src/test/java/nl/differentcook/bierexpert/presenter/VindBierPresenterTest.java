@@ -25,12 +25,13 @@ public class VindBierPresenterTest {
     private final List<String> VEEL_LANDEN = Arrays.asList("Nederland", "België", "Duitsland");
     private final List<String> VEEL_MERKEN = Arrays.asList("Grolsch", "Bavaria", "Leffe", "Westmalle");
 
-    @Mock
-    IBierexpert bierexpert;
+    private VindBierPresenter vindBierPresenter;
 
     @Mock
-    IVindBierView bierview;
-    VindBierPresenter vindBierPresenter;
+    private IBierexpert bierexpert;
+
+    @Mock
+    private IVindBierView bierview;
 
     @Before
     public void setUp() throws Exception {
