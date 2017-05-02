@@ -1,6 +1,10 @@
 package nl.differentcook.bierexpert.presenter;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,101 +18,57 @@ import static org.junit.Assert.*;
 /**
  * Created by esg on 30/04/2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class VindBierPresenterTest {
+
+    @Mock
+    IBierexpert bierexpert;
+
+    @Mock
+    IVindBierView bierview;
+
     @Test
     public void laadLandenGevonden() throws Exception {
 
         //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert(false);
+        List<String> landenLijst = Arrays.asList("Nederland", "België", "Duitsland");
+        Mockito.when(bierexpert.getLanden("Pils")).thenReturn(landenLijst);
 
         //when
         VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
         vindBierPresenter.laadLanden("Pils");
 
         //then
-        assertTrue(((MockView) bierview).passed);
+        Mockito.verify(bierview).toonLanden(landenLijst);
 
     }
 
     @Test
     public void laadGeenLandenGevonden() throws Exception {
 
-        //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert(true);
-
         //when
         VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
         vindBierPresenter.laadLanden("Pils");
 
         //then
-        assertTrue(((MockView) bierview).geenlandengetoond);
+        Mockito.verify(bierview).toonGeenLanden();
 
     }
-
 
     @Test
     public void laadMerken() throws Exception {
 
         //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert();
+        List<String> merkenLijst = Arrays.asList("Grolsch", "Leffe");
+        Mockito.when(bierexpert.getMerken("Blond")).thenReturn(merkenLijst);
 
         //when
         VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
         vindBierPresenter.laadMerken("Blond");
 
         //then
-        assertTrue(((MockView) bierview).passed);
+        Mockito.verify(bierview).toonMerken(merkenLijst);
 
     }
 
-    private class MockView implements IVindBierView {
-
-        boolean passed;
-        boolean geenlandengetoond;
-
-        @Override
-        public void toonLanden(List<String> landenLijst) {
-            passed = (landenLijst.size() == 3);
-        }
-
-        @Override
-        public void toonGeenLanden() {
-            geenlandengetoond = true;
-        }
-
-
-        @Override
-        public void toonMerken(List<String> merkenLijst) {
-            passed = (merkenLijst.size() == 2);
-        }
-    }
-
-    private class MockBierexpert implements IBierexpert {
-
-        boolean geenLanden;
-
-        public MockBierexpert() {
-        }
-
-        public MockBierexpert(boolean geenLanden) {
-            this.geenLanden = geenLanden;
-        }
-
-        @Override
-        public List<String> getLanden(String type) {
-            if (geenLanden) {
-                return Collections.EMPTY_LIST;
-            } else {
-                return Arrays.asList("Nederland", "België", "Duitsland");
-            }
-        }
-
-        @Override
-        public List<String> getMerken(String type) {
-            return Arrays.asList("Grolsch", "Leffe");
-        }
-    }
 }
