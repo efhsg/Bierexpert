@@ -3,12 +3,15 @@ package nl.differentcook.bierexpert.view;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemSelected;
 import nl.differentcook.bierexpert.R;
 import nl.differentcook.bierexpert.lib.App;
 import nl.differentcook.bierexpert.presenter.VindBierPresenter;
@@ -17,51 +20,52 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
 
     private VindBierPresenter vindBierPresenter;
 
+    @BindView(R.id.biertypenSpinner)
+    Spinner biertypen;
+
+    @BindView(R.id.landenText)
+    TextView landen;
+
+    @BindView(R.id.merkenText)
+    TextView merken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vind_bier);
-        ((Spinner) findViewById(R.id.biertypenSpinner)).setOnItemSelectedListener(new BiertypeSpinnerActivity());
+        ButterKnife.bind(this);
         vindBierPresenter = new VindBierPresenter(this);
     }
 
+    @OnItemSelected(R.id.biertypenSpinner)
+    public void spinnerItemSelected(Spinner spinner, int position) {
+        landen.setText("");
+        merken.setText("");
+    }
+
+    @OnClick(R.id.vindLandenButton)
     public void landenButtonClicked(View view) {
-        vindBierPresenter.laadLanden(String.valueOf(((Spinner) findViewById(R.id.biertypenSpinner)).getSelectedItem()));
+        vindBierPresenter.laadLanden(String.valueOf((biertypen.getSelectedItem())));
+    }
+
+    @OnClick(R.id.vindMerkenButton)
+    public void merkenButonClicked(View view) {
+        vindBierPresenter.laadMerken(String.valueOf(biertypen.getSelectedItem()));
     }
 
     @Override
     public void toonLanden(List<String> landenLijst) {
-        ((TextView) findViewById(R.id.landenText)).setText(App.listToStringbuilder(landenLijst));
+        landen.setText(App.listToStringbuilder(landenLijst));
     }
 
     @Override
     public void toonGeenLanden() {
-        ((TextView) findViewById(R.id.landenText)).setText(R.string.geen_landen_gevonden);
-    }
-
-    public void merkenButonClicked(View view) {
-        vindBierPresenter.laadMerken(String.valueOf(((Spinner) findViewById(R.id.biertypenSpinner)).getSelectedItem()));
+        landen.setText(R.string.geen_landen_gevonden);
     }
 
     @Override
     public void toonMerken(List<String> merkenLijst) {
-        ((TextView) findViewById(R.id.merkenText)).setText(App.listToStringbuilder(merkenLijst));
-    }
-
-    public class BiertypeSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            wisSelecties();
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-        }
-    }
-
-    private void wisSelecties() {
-        ((TextView) (findViewById(R.id.landenText))).setText("");
-        ((TextView) (findViewById(R.id.merkenText))).setText("");
+        merken.setText(App.listToStringbuilder(merkenLijst));
     }
 
 }
