@@ -18,11 +18,6 @@ public class VindBierPresenter {
     private IVindBierView bierView;
     private IBierexpert bierexpert;
 
-    public VindBierPresenter(IVindBierView view) {
-        this.bierView = view;
-        bierexpert = new Bierexpert();
-    }
-
     public VindBierPresenter(IVindBierView bierView, IBierexpert bierexpert) {
         this.bierView = bierView;
         this.bierexpert = bierexpert;
