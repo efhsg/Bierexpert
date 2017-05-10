@@ -24,7 +24,6 @@ import nl.differentcook.bierexpert.presenter.VindBierPresenter;
 public class VindBierAcitivity extends Activity implements IVindBierView {
 
     private VindBierPresenter vindBierPresenter;
-    private IBierexpert bierexpert;
 
     @BindView(R.id.biertypenSpinner)
     Spinner biertypen;
@@ -40,13 +39,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vind_bier);
         ButterKnife.bind(this);
-
-        BierexpertComponent bierexpertComponent =
-                DaggerBierexpertComponent.builder().bierexpertModule(new BierexpertModule()).build();
-
-        bierexpert = bierexpertComponent.provideBierexpert();
-
-        vindBierPresenter = new VindBierPresenter(this, bierexpert);
+        vindBierPresenter = new VindBierPresenter(this);
     }
 
     @OnItemSelected(R.id.biertypenSpinner)
