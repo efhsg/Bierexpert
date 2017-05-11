@@ -4,8 +4,11 @@ package nl.differentcook.bierexpert.presenter;
 import java.util.Collections;
 import java.util.List;
 
+import nl.differentcook.bierexpert.component.BierexpertComponent;
+import nl.differentcook.bierexpert.component.DaggerBierexpertComponent;
 import nl.differentcook.bierexpert.model.Bierexpert;
 import nl.differentcook.bierexpert.model.IBierexpert;
+import nl.differentcook.bierexpert.module.BierexpertModule;
 import nl.differentcook.bierexpert.view.IVindBierView;
 
 
@@ -18,19 +21,23 @@ public class VindBierPresenter {
     private IVindBierView bierView;
     private IBierexpert bierexpert;
 
-    public VindBierPresenter(IVindBierView view) {
-        this.bierView = view;
-        bierexpert = new Bierexpert();
-    }
-
     public VindBierPresenter(IVindBierView bierView, IBierexpert bierexpert) {
         this.bierView = bierView;
         this.bierexpert = bierexpert;
     }
 
+    public VindBierPresenter(IVindBierView bierView) {
+        this.bierView = bierView;
+
+        BierexpertComponent bierexpertComponent =
+                DaggerBierexpertComponent.builder().bierexpertModule(new BierexpertModule()).build();
+
+        bierexpert = bierexpertComponent.provideBierexpert();
+    }
+
     public void laadLanden(String bierType) {
         List<String> landenList = bierexpert.getLanden(bierType);
-        if (landenList == Collections.EMPTY_LIST) {
+        if (landenList.size() == 0) {
             bierView.toonGeenLanden();
         }
         else {

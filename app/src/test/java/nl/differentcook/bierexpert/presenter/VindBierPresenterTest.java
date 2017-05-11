@@ -1,114 +1,80 @@
 package nl.differentcook.bierexpert.presenter;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import nl.differentcook.bierexpert.model.IBierexpert;
 import nl.differentcook.bierexpert.view.IVindBierView;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by esg on 30/04/2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class VindBierPresenterTest {
+
+    private final String BIERTYPE = "Pils";
+    private final List<String> VEEL_LANDEN = Arrays.asList("Nederland", "België", "Duitsland");
+    private final List<String> VEEL_MERKEN = Arrays.asList("Grolsch", "Bavaria", "Leffe", "Westmalle");
+
+    private VindBierPresenter vindBierPresenter;
+
+    @Mock
+    private IBierexpert bierexpert;
+
+    @Mock
+    private IVindBierView bierview;
+
+    @Before
+    public void setUp() throws Exception {
+        vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
+    }
+
     @Test
     public void laadLandenGevonden() throws Exception {
 
         //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert(false);
+        when(bierexpert.getLanden(BIERTYPE)).thenReturn(VEEL_LANDEN);
 
         //when
-        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
-        vindBierPresenter.laadLanden("Pils");
+        vindBierPresenter.laadLanden(BIERTYPE);
 
         //then
-        assertTrue(((MockView) bierview).passed);
+        verify(bierview).toonLanden(VEEL_LANDEN);
 
     }
 
     @Test
     public void laadGeenLandenGevonden() throws Exception {
 
-        //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert(true);
-
         //when
-        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
-        vindBierPresenter.laadLanden("Pils");
+        vindBierPresenter.laadLanden(BIERTYPE);
 
         //then
-        assertTrue(((MockView) bierview).geenlandengetoond);
+        verify(bierview).toonGeenLanden();
 
     }
-
 
     @Test
     public void laadMerken() throws Exception {
 
         //given
-        IVindBierView bierview = new MockView();
-        IBierexpert bierexpert = new MockBierexpert();
+        when(bierexpert.getMerken(BIERTYPE)).thenReturn(VEEL_MERKEN);
 
         //when
-        VindBierPresenter vindBierPresenter = new VindBierPresenter(bierview, bierexpert);
-        vindBierPresenter.laadMerken("Blond");
+        vindBierPresenter.laadMerken(BIERTYPE);
 
         //then
-        assertTrue(((MockView) bierview).passed);
+        verify(bierview).toonMerken(VEEL_MERKEN);
 
     }
 
-    private class MockView implements IVindBierView {
-
-        boolean passed;
-        boolean geenlandengetoond;
-
-        @Override
-        public void toonLanden(List<String> landenLijst) {
-            passed = (landenLijst.size() == 3);
-        }
-
-        @Override
-        public void toonGeenLanden() {
-            geenlandengetoond = true;
-        }
-
-
-        @Override
-        public void toonMerken(List<String> merkenLijst) {
-            passed = (merkenLijst.size() == 2);
-        }
-    }
-
-    private class MockBierexpert implements IBierexpert {
-
-        boolean geenLanden;
-
-        public MockBierexpert() {
-        }
-
-        public MockBierexpert(boolean geenLanden) {
-            this.geenLanden = geenLanden;
-        }
-
-        @Override
-        public List<String> getLanden(String type) {
-            if (geenLanden) {
-                return Collections.EMPTY_LIST;
-            } else {
-                return Arrays.asList("Nederland", "België", "Duitsland");
-            }
-        }
-
-        @Override
-        public List<String> getMerken(String type) {
-            return Arrays.asList("Grolsch", "Leffe");
-        }
-    }
 }
