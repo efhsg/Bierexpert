@@ -1,12 +1,10 @@
 package nl.differentcook.bierexpert.presenter;
 
 
-import java.util.Collections;
 import java.util.List;
 
 import nl.differentcook.bierexpert.component.BierexpertComponent;
 import nl.differentcook.bierexpert.component.DaggerBierexpertComponent;
-import nl.differentcook.bierexpert.model.Bierexpert;
 import nl.differentcook.bierexpert.model.IBierexpert;
 import nl.differentcook.bierexpert.module.BierexpertModule;
 import nl.differentcook.bierexpert.view.IVindBierView;
@@ -39,8 +37,7 @@ public class VindBierPresenter {
         List<String> landenList = bierexpert.getLanden(bierType);
         if (landenList.size() == 0) {
             bierView.toonGeenLanden();
-        }
-        else {
+        } else {
             bierView.toonLanden(landenList);
         }
 

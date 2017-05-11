@@ -13,12 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import nl.differentcook.bierexpert.R;
-import nl.differentcook.bierexpert.component.BierexpertComponent;
-import nl.differentcook.bierexpert.component.DaggerBierexpertComponent;
 import nl.differentcook.bierexpert.lib.App;
-import nl.differentcook.bierexpert.model.Bierexpert;
-import nl.differentcook.bierexpert.model.IBierexpert;
-import nl.differentcook.bierexpert.module.BierexpertModule;
 import nl.differentcook.bierexpert.presenter.VindBierPresenter;
 
 public class VindBierAcitivity extends Activity implements IVindBierView {

@@ -3,7 +3,7 @@
     <string name="landen">Landen</string>
     <string name="merken">Merken</string>
     <string name="kies_een_biertype">Kies een biertype</string>
-    <string name="geenLanden">Geen landen gevonden!</string>
+    <string name="geen_landen_gevonden">Geen landen gevonden!</string>
     <string-array name="bierSoorten">
         <item></item>
         <item>Blond</item>
