@@ -36,7 +36,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
 
     @Override
     public void toonGeenLanden() {
-        ((TextView) findViewById(R.id.landenText)).setText("Geen landen gevonden!");
+        ((TextView) findViewById(R.id.landenText)).setText(R.string.geenLanden);
     }
 
     public void merkenButonClicked(View view) {
