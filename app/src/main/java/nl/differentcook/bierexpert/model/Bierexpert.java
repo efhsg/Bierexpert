@@ -3,8 +3,15 @@ package nl.differentcook.bierexpert.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class Bierexpert implements IBierexpert {
+
+    @Inject
+    public Bierexpert() {
+    }
 
     @Override
     public List<String> getLanden(String type) {

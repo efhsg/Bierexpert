@@ -26,11 +26,7 @@ public class VindBierPresenter {
 
     public VindBierPresenter(IVindBierView bierView) {
         this.bierView = bierView;
-
-        BierexpertComponent bierexpertComponent =
-                DaggerBierexpertComponent.builder().bierexpertModule(new BierexpertModule()).build();
-
-        bierexpert = bierexpertComponent.provideBierexpert();
+        this.bierexpert = (DaggerBierexpertComponent.builder().build()).provideBierexpert();
     }
 
     public void laadLanden(String bierType) {

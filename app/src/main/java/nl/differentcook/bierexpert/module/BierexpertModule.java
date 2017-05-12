@@ -10,10 +10,5 @@ import nl.differentcook.bierexpert.model.Bierexpert;
 @Module
 public class BierexpertModule {
 
-    @Provides
-    @Singleton
-    Bierexpert provideBierexpert() {
-        return new Bierexpert();
-    }
 
 }
