@@ -24,11 +24,6 @@ public class VindBierPresenter {
         this.bierexpert = bierexpert;
     }
 
-    public VindBierPresenter(IVindBierView bierView) {
-        this.bierView = bierView;
-        this.bierexpert = (DaggerBierexpertComponent.builder().build()).provideBierexpert();
-    }
-
     public void laadLanden(String bierType) {
         List<String> landenList = bierexpert.getLanden(bierType);
         if (landenList.size() == 0) {
