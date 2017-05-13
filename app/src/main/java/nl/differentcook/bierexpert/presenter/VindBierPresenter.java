@@ -3,10 +3,10 @@ package nl.differentcook.bierexpert.presenter;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
+import nl.differentcook.bierexpert.component.BierexpertComponent;
 import nl.differentcook.bierexpert.component.DaggerBierexpertComponent;
 import nl.differentcook.bierexpert.model.IBierexpert;
+import nl.differentcook.bierexpert.module.BierexpertModule;
 import nl.differentcook.bierexpert.view.IVindBierView;
 
 
@@ -17,9 +17,12 @@ import nl.differentcook.bierexpert.view.IVindBierView;
 public class VindBierPresenter {
 
     private IVindBierView bierView;
+    private IBierexpert bierexpert;
 
-    @Inject
-    IBierexpert bierexpert;
+    public VindBierPresenter(IVindBierView bierView, IBierexpert bierexpert) {
+        this.bierView = bierView;
+        this.bierexpert = bierexpert;
+    }
 
     public VindBierPresenter(IVindBierView bierView) {
         this.bierView = bierView;
