@@ -9,7 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import nl.differentcook.bierexpert.R;
-import nl.differentcook.bierexpert.lib.App;
+import nl.differentcook.bierexpert.lib.Appl;
 import nl.differentcook.bierexpert.model.Bierexpert;
 
 public class VindBierActivity extends Activity {
@@ -24,13 +24,13 @@ public class VindBierActivity extends Activity {
     public void vindLanden(View view) {
         Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
         Bierexpert bierexpert = new Bierexpert(String.valueOf(bierType.getSelectedItem()));
-        ((TextView) findViewById(R.id.landenText)).setText(App.listToStringbuilder(bierexpert.getLanden()));
+        ((TextView) findViewById(R.id.landenText)).setText(Appl.listToStringbuilder(bierexpert.getLanden()));
     }
 
     public void vindMerken(View view) {
         Spinner bierType = (Spinner) findViewById(R.id.biertypenSpinner);
         Bierexpert bierexpert = new Bierexpert(String.valueOf(bierType.getSelectedItem()));
-        ((TextView) findViewById(R.id.merkenText)).setText(App.listToStringbuilder(bierexpert.getMerken()));
+        ((TextView) findViewById(R.id.merkenText)).setText(Appl.listToStringbuilder(bierexpert.getMerken()));
     }
 
 
@@ -39,7 +39,7 @@ public class VindBierActivity extends Activity {
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
             wisSelecties(view);
-            Log.i(App.getTag(), "Biertype: " + parent.getItemAtPosition(pos).toString());
+            Log.i(Appl.getTag(), "Biertype: " + parent.getItemAtPosition(pos).toString());
         }
 
         public void onNothingSelected(AdapterView<?> parent) {
