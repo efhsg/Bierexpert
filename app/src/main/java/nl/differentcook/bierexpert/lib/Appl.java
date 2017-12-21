@@ -6,7 +6,7 @@ import java.util.List;
  * Created by esg on 28/04/2017.
  */
 
-public class App {
+public class Appl {
 
     public static String getTag() {
         String tag = "";

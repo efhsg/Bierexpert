@@ -16,7 +16,7 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import nl.differentcook.bierexpert.R;
 import nl.differentcook.bierexpert.component.DaggerBierexpertComponent;
-import nl.differentcook.bierexpert.lib.App;
+import nl.differentcook.bierexpert.lib.Appl;
 import nl.differentcook.bierexpert.model.IBierexpert;
 import nl.differentcook.bierexpert.presenter.VindBierPresenter;
 
@@ -62,7 +62,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
 
     @Override
     public void toonLanden(List<String> landenLijst) {
-        landen.setText(App.listToStringbuilder(landenLijst));
+        landen.setText(Appl.listToStringbuilder(landenLijst));
     }
 
     @Override
@@ -72,7 +72,7 @@ public class VindBierAcitivity extends Activity implements IVindBierView {
 
     @Override
     public void toonMerken(List<String> merkenLijst) {
-        merken.setText(App.listToStringbuilder(merkenLijst));
+        merken.setText(Appl.listToStringbuilder(merkenLijst));
     }
 
 }
